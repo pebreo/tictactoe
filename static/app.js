@@ -1,12 +1,6 @@
 
 var Funcs = function() {};
 
-
-Funcs.prototype.foo = function() {
-  return 'foo';
-}
-
-
 Funcs.prototype.isComputerTurn = function(tilestr) {
   
   letters = tilestr.split('');
