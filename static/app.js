@@ -6,11 +6,6 @@ Funcs.prototype.foo = function() {
   return 'foo';
 }
 
-/*
-Funcs.prototype.handlestr = function() {
-  return {case: 'computerturn', cell: null};
-}
-*/
 
 Funcs.prototype.isComputerTurn = function(tilestr) {
   
@@ -24,19 +19,7 @@ Funcs.prototype.isComputerTurn = function(tilestr) {
 } 
 
 Funcs.prototype.checkComputerLostHor = function(tilestr) {
-  // horizontal
-  //var re = /.{0,3}X{3}/g;
-  /*
-  var re = /(.){3}X{3}/g;
-  var result = tilestr.match(re);
-  if(result===null) {
-    result = {};
-    result.length = 0;
-  }
-  if(result.length==1) {
-    return true;
-  } else { return false; }
-  */
+
   var splitted = tilestr.match(/.../g);
   if(splitted[0]=='XXX') { return true }
   if(splitted[1]=='XXX') { return true }
@@ -55,7 +38,7 @@ Funcs.prototype.checkComputerLostHor2 = function(tilestr) {
 } 
 
 Funcs.prototype.checkComputerLostVert = function(tilestr) {
-  // horizontal
+  
   var re = /X../g;
   var result = tilestr.match(re);
 
@@ -84,7 +67,7 @@ Funcs.prototype.checkComputerLostVert = function(tilestr) {
 } 
 
 Funcs.prototype.checkComputerLostDiag = function(tilestr) {
-  // 
+  
   var re = /X...X...X/g;
   var result = tilestr.match(re);
   
@@ -116,18 +99,7 @@ Comp.prototype.run_strat1 = function() {
 }
 
 Funcs.prototype.checkComputerWonHor = function(tilestr) {
-  // horizontal
-  /*
-  var re = /O{3}/g;
-  var result = tilestr.match(re);
-  if(result===null) {
-    result = {};
-    result.length = 0;
-  }
-  if(result.length==1) {
-    return true;
-  } else { return false; }
-  */
+
   var splitted = tilestr.match(/.../g);
   if(splitted[0]=='OOO') { return true }
   if(splitted[1]=='OOO') { return true }
@@ -204,9 +176,8 @@ Comp.prototype.matchPattern = function(tilestr, patt) {
 }
 
 
-
 Funcs.prototype.makeComputerMove = function(OL_jobject, tilenum) {
-   //OL_jobject = $("#selectable");
+  //OL_jobject = $("#selectable");
   li = OL_jobject.children();
   //console.log(li);
   $(li[tilenum]).text("O");
@@ -225,11 +196,8 @@ Funcs.prototype.getTileStr = function(OL_jobject) {
 
 
 Funcs.prototype.handlestr = function(OL_jobject, tilestr) {
-   var pc = new Comp();
-  //newstr = this.getTileStr(OL_jobject);
-  //console.log('newstr' + newstr);
-  //return {case: 'computerwon', cell: null};
-  
+  var pc = new Comp();
+
   if(this.checkComputerLost(tilestr)) {
     return {case: 'computerlost', cell: null};
   }
@@ -250,6 +218,5 @@ Funcs.prototype.handlestr = function(OL_jobject, tilestr) {
       return { case:'computerturn', cell: null}
   }
   return { case:'humanturn', cell: null}
-  
 }
 
