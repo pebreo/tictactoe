@@ -1,6 +1,5 @@
 var Comp = function() {};
 
-
 Comp.prototype.conds1 = function(tilestr) {
   // 1
   if(this.matchPattern(tilestr, "OX_______")) {
@@ -412,14 +411,11 @@ Comp.prototype.conds12 = function(tilestr) {
   if(this.matchPattern(tilestr, "O_OXX_O_X")) {
     return 1;
   }
-  
   //OXOX__O_X
   if(this.matchPattern(tilestr, "OXOX__O_X")) {
     return 4;
   }
 }
-
-
 
 Comp.prototype.calcComputerMove = function(tilestr) {
   var tile = undefined;
