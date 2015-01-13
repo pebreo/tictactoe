@@ -6,11 +6,6 @@ describe("Basic", function() {
         logic = new Funcs();
         
     }); 
-  
-    it("returns foo", function() {
-        //calc.add(1,2);
-        expect(logic.foo()).toBe('foo');
-    });
     
     it("should know its turn", function() {
         // when # Xs == # Os
@@ -98,13 +93,11 @@ describe("Basic", function() {
         expect(logic.checkComputerWon('XXOXOXOXX')).toBe(true);
         expect(logic.checkComputerWon('___OOOX_X')).toBe(true);
         //expect(logic.checkComputerLost('OOOX_XO_O')).toBe(false);
-      //  expect(logic.checkComputerLostDiag('OXOOXOOXO')).toBe(true);
+       //expect(logic.checkComputerLostDiag('OXOOXOOXO')).toBe(true);
         
     });
     
     xit("should know that it drew", function() {
-        // when # Xs == # Os
-        // toBe() is is for 
         expect(logic.handlestr()).toEqual({case: 'computerturn', cell: null});
     });
     
