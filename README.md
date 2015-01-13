@@ -16,6 +16,7 @@ To install this project just clone this repo.
 Open the `index.html` in your browser and push the 'Click to Start' button.
 
 ## To-do
+- Make computer tiles and already-select human tiles unselectable
 - Randomize computer start move
 - Give human choice to start first
 - Make graphics nicer
