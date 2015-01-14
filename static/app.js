@@ -1,5 +1,23 @@
 
 var Funcs = function() {};
+var selected_tiles = [];
+
+Funcs.prototype.add_selected_tile = function(n) {
+  if(_.indexOf(selected_tiles,n) == -1) {
+    selected_tiles.push(n)
+  }
+}
+
+Funcs.prototype.checkIsSelected = function(n) {
+  if(_.indexOf(selected_tiles,n) == -1) {
+    return false;
+  }
+  return true;
+}
+
+Funcs.prototype.clear_selected_tiles = function(tilestr) {
+  selected_tiles = [];
+}
 
 Funcs.prototype.isComputerTurn = function(tilestr) {
   
@@ -201,6 +219,7 @@ Funcs.prototype.handlestr = function(OL_jobject, tilestr) {
     
       // make computer move
       this.makeComputerMove(OL_jobject, tilenum);
+      this.add_selected_tile(tilenum);
       
       // get tilestr
       newstr = this.getTileStr(OL_jobject);
