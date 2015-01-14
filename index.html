@@ -57,7 +57,10 @@
           $("#selectable").selectable({
               selected: function( event, ui ) {}
           });
+          
           $("#selectable li:eq(0)").text("O");
+          logic.add_selected_tile(0);
+
           // draw Q  
           $( "#selectable" ).on( "selectableselected", function( event, ui ) {
               
