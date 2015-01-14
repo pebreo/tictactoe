@@ -41,6 +41,7 @@
      }
      
      $("#clearButton").click(function() {
+        logic.clear_selected_tiles();
         $("#selectable li").each(function(item) {
          $(this).text('');
        });
@@ -49,6 +50,7 @@
      $( "#startButton" ).click(function() {
          var tilestr;
          cleartiles();
+         logic.clear_selected_tiles();
           //alert( "Handler for .click() called." );
           $( "#selectable" ).selectable();
            //Initialize the selectable with the selected callback specified
@@ -58,7 +60,17 @@
           $("#selectable li:eq(0)").text("O");
           // draw Q  
           $( "#selectable" ).on( "selectableselected", function( event, ui ) {
-             $(ui.selected).text("X");
+              
+              n = $(ui.selected).index();
+              console.log("the child n " + n);
+              if(logic.checkIsSelected(n)) { 
+                console.log("found that it is selected" + n);
+                return false;
+              }
+              logic.add_selected_tile(n);
+
+              $(ui.selected).text("X");
+              
               // create string
               tilestr = $("#selectable li").map(function(){return $(this).text() ? $(this).text(): '_';}).get().join("");
               console.log('tilestr:' + tilestr);
