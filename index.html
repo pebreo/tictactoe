@@ -28,10 +28,13 @@
   .jasmin_reporter {float: bottom; }
     
   </style>
+  
   <script>
   $(function() {
+     
      logic = new Funcs();
      var outcome;
+     
      var cleartiles = function() {
        $("#selectable li").each(function(item) {
          $(this).text('');
@@ -48,11 +51,13 @@
      });
      
      $( "#startButton" ).click(function() {
+         
          var tilestr;
          cleartiles();
          logic.clear_selected_tiles();
-          //alert( "Handler for .click() called." );
-          $( "#selectable" ).selectable();
+          
+          $("#selectable").selectable();
+           
            //Initialize the selectable with the selected callback specified
           $("#selectable").selectable({
               selected: function( event, ui ) {}
@@ -64,6 +69,7 @@
           // draw Q  
           $( "#selectable" ).on( "selectableselected", function( event, ui ) {
               
+              //Keep track of selected text so you can't select it again
               n = $(ui.selected).index();
               console.log("the child n " + n);
               if(logic.checkIsSelected(n)) { 
@@ -77,20 +83,24 @@
               // create string
               tilestr = $("#selectable li").map(function(){return $(this).text() ? $(this).text(): '_';}).get().join("");
               console.log('tilestr:' + tilestr);
+              
               // pass string
               ol = $("#selectable");
               outcome = logic.handlestr(ol,tilestr);
               console.log(outcome);
               
               switch(outcome.case) {
+                
                 case 'computerlost':
                   console.log('won string:' + tilestr);
                   console.log('computerlost');
                   $("#message").text("You won!");
                   break;
+                
                 case 'computerturn':
                   console.log('computerturn');
                   break;
+                
                 case 'computerwon':
                   console.log('computerwon');
                   $("#message").text("The computer won. Try again.");
@@ -102,11 +112,8 @@
           
         
       }); //end startButton
-      $('#testb1').click(function(){
-        logic = new Funcs();
-        
-      });
-      //$( "#selectable" ).selectable();
+
+      
       $( "#selectable" ).disabled();
       
   }); // end jquery
